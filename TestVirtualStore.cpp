@@ -3,14 +3,14 @@
 #include <fstream>
 #include <string>
 
-const char* FOLDER1 = "C:\\Program Files\\TestVirtualStore";
+const char* FOLDER1 = ".";
 const char* FOLDER2 = "C:\\ProgramData\\TestVirtualStore";
 const char* FILENAME = "myfile.txt";
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
 	std::cout << "This program illustrates issues with VirtualStore" << std::endl;
-	std::cout << "1 - Program Files folder (ensure " << FOLDER1 << " exists)" << std::endl;
+	std::cout << "1 - Working directory" << std::endl;
 	std::cout << "2 - ProgramData folder (ensure " << FOLDER2 << " exists)" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Please select: ";
@@ -41,15 +41,16 @@ int _tmain( int argc, _TCHAR* argv[] )
 		std::getline( input, line );
 
 		std::cout << filename << " was found and contains:" << std::endl;
-		std::cout << line << std::endl;
+		std::cout << line << std::endl << std::endl;
 
-		std::string dummy;
-		std::getline( std::cin, dummy );
+		std::cout << "Replacing file" << std::endl;
 
-		return 0;
+	}
+	else
+	{
+		std::cout << filename << " was not found." << std::endl;
 	}
 
-	std::cout << filename << " was not found." << std::endl;
 
 	std::ofstream output;
 	output.open( filename, std::ofstream::out | std::ofstream::trunc );
